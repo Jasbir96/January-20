@@ -38,6 +38,20 @@ var arr = [
     return "i am fn inside an array";
   }
 ];
+var cap = {
+  firstName: "Steve",
+  lastName: "Rogers",
+  age: 5,
+  friends: ["tony", "Bruce", "Peter"],
+  sayHi: function() {
+    console.log("Cap says Hi");
+    
+  },
+  address: {
+    city: "Manhatten",
+    state: "New York"
+  }
+};
 // print(arr[3]);
 // print(arr[5][2]);
 // print(arr[6]());

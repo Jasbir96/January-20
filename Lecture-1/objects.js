@@ -13,33 +13,19 @@ var cap = {
   }
 };
 
-
-for(var key in cap){
-  console.log(key+" : "+cap[key]);
+// console.log(cap.lastName);
+// console.log(cap.firstName);
+var variable = "friends";
+// // key =>
+// console.log(cap[variable]);
+// create/update
+cap.age = 45;
+cap.movies=["winter soldier","Avengers"]
+function updateObj(key){
+  // cap[key]=value;
+  delete cap[key];
   
 }
-console.log("``````````````````");
-for(var key in cap){
-  console.log(key +" : "+cap.key );
-}
-// get =>
-// .operator
-// []
-// print(cap.lastName);
-// print(cap["lastName"]);
-//undefined
-// print(cap.lastname);
-// update,create=>
-// cap.age = 45;
-// cap.movies = ["civil War", "Winter Soldier", "Avengers"];
-// // delete
-// delete cap.lastName;
-// print(cap);
 
-// function updateCap(key, value) {
-// cap[key]=value;
-// console.log(cap);
-// console.log("`````````````````````````````");
-// }
-// updateCap("lastName", "Setevnson");
-// updateCap("firstName", "Jhon");
+updateObj("firstName");
+console.log(cap);
