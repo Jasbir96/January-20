@@ -1,0 +1,17 @@
+
+function downloadFile(url, downloaded) {
+  // We are downloading the file here
+  var path = "C:\\Downloads\\";
+  // let's assume it takes 3 seconds to download
+  // accepts url of image and callback which is called when downloading is done
+}
+downloadFile(http://google.com/logo.png,function(data){
+})
+Input:
+// url:http://google.com/logo.png
+
+// output:
+// Downloading file from: http://google.com/logo.png
+// File saved to: C:\Downloads\logo.png
+
+downloadFile(http://google.com/logo.png,downloaded);

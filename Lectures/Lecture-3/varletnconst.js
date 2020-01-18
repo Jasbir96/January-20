@@ -6,7 +6,6 @@
 // }
 // var y;
 // console.log(y);
-
 // arrays => objects;
 const arr = [
   1,

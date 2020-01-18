@@ -1,0 +1,34 @@
+gdrive
+function downloadFile(url, downloaded) {
+  // We are downloading the file here
+  var path = "C:\\Downloads\\";
+  // let's assume it takes 3 seconds to download
+  // accepts url of image and callback which is called when downloading is done
+}
+zlib
+function compressFile(filePath, compressed) {
+  // let's assume it takes 2 seconds to compress
+  //accepts  image filepath and callback which is called when compressesion is done
+}
+dropbox
+function uploadFile(diskPath, uploaded) {
+  var uploadUrl = "http://pep/uploads";
+  // We will upload this file, it takes 3 seconds,
+  // let's assume it takes 3 seconds to upload
+  //accepts  image filepath and callback which is called when uploading is done
+}
+
+
+
+// url:http://google.com/logo.png
+// output:
+// Downloading file from: http://google.com/logo.png
+//3 sec
+// File saved to: C:\Downloads\logo.png
+// We are compressing: C:\Downloads\logo.png
+//5sec
+// File compressed to: C:\Downloads\logo-resized.png
+// Uploading to: http://pep/uploads
+//8sec
+// File successfully uploaded to: http://pep/uploads/logo-resized.png
+// Task completed

@@ -1,0 +1,25 @@
+var ajax = require("./lib/filedownload");
+//***************************************
+var files = ["file1", "file2", "file3"];
+
+function getFile(file) {
+  ajax.fakeAjax(file, function(data) {
+// what do we do here?
+console.log("Incoming File "+file+" "+data);
+  });
+}
+// request all files at once in "parallel"
+//print as soon as you receive them
+// print them in seqential order
+getFile("file1");
+getFile("file2");
+getFile("file3");
+//output
+Requesting: file1
+Requesting: file2
+Requesting: file3
+The first  file's data
+The second file's data
+The third file's data 
+Complete
+
