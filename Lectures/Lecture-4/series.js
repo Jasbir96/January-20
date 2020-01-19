@@ -56,7 +56,7 @@ function uploadFile(diskPath, uploaded) {
 function downloaded(dFile) {
   console.log(" File saved to:" + dFile);
   // Dfile=dFile;
-  compressFile(dfile, compressed);
+  compressFile(dFile, compressed);
 }
 downloadFile("http://google.com/logo.png", downloaded);
 

@@ -12,6 +12,7 @@ var cap = {
     state: "New York"
   }
 };
+// JSON Format=> 
 
 // console.log(cap.lastName);
 // console.log(cap.firstName);
@@ -20,11 +21,10 @@ var variable = "friends";
 // console.log(cap[variable]);
 // create/update
 cap.age = 45;
-cap.movies=["winter soldier","Avengers"]
-function updateObj(key){
+cap.movies = ["winter soldier", "Avengers"];
+function updateObj(key) {
   // cap[key]=value;
   delete cap[key];
-  
 }
 
 updateObj("firstName");

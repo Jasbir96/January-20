@@ -1,0 +1,3 @@
+http://patorjk.com/software/
+https://www.npmjs.com/package/figlet
+https://github.com/chalk/chalk

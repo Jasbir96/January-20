@@ -1,0 +1,17 @@
+
+
+event.on("keyStroke",function(key){
+ if(up){
+
+ }else if(down){
+
+ }
+
+})
+
+
+
+
+event.emit("keyStroke",up);
+event.emit("keyStroke",down);
+event.emit("mouse",mousedown);

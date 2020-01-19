@@ -4,14 +4,20 @@ function getData(num, cb) {
     cb(num);
   }, 1000);
 }
-getData(10, function(num1) {
-  var x = 1 + num1;
+var x;
+
+getData(10, fn1);
+
+function fn1(num1) {
+  x = 1 + num1;
   console.log(x);
-  getData(30, function(num2) {
-    var y = 1 + num2;
-    console.log(y);
-    getData(x + y, function(answer) {
-      console.log(answer);
-    });
-  });
-});
+  getData(30, fn2);
+}
+function fn2(num2) {
+  var y = 1 + num2;
+  console.log(y);
+  getData(x + y,fn3);
+}
+function fn3(answer) {
+  console.log(answer);
+}
