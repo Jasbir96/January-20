@@ -6,6 +6,7 @@ console.log(variable);
 function sayHi() {
   console.log("Hello All");
 }
+
 // function expression
 var greeter = function fn1() {
   console.log("Greeting to all");

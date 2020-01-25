@@ -1,5 +1,5 @@
 var arr = [1, 2, 3, 4, 5];
-function doubeIt(x) {
+function doubleIt(x) {
   return 2 * x;
 }
 // pollyfill
@@ -12,7 +12,7 @@ function transformer(arr, cb) {
   return narr;
 }
 
-var dArr = transformer(arr, doubeIt);
+var dArr = transformer(arr, doubleIt);
 
 console.log(dArr);
 console.log(arr);
