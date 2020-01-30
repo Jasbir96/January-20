@@ -5,11 +5,14 @@ const readline = require("readline");
 const reader = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
-  prompt: "$$"
+  prompt: "mohit>"
 });
+
 console.clear();
 reader.prompt();
 // 
+
+// predefined => readline module
 reader.on("line", function(data) {
   console.log("Did You Just said " + data);
   reader.prompt();

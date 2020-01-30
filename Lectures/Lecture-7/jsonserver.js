@@ -29,6 +29,7 @@ const server = http.createServer(function(req, res) {
     // console.log()
     
   } else {
+    res.write("<h1>404 Page Not found</h1>")
     res.end();
   }
 });

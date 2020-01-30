@@ -9,6 +9,7 @@ eventMaker.on("submit", function(username, password) {
     console.log("UserName or password is wrong");
   }
 });
+
 eventMaker.on("submit", function(username, password) {
   if (username == "Jhon" && password == "1234") {
     console.log("Welcome Admin");
@@ -19,6 +20,11 @@ eventMaker.on("submit", function(username, password) {
 
 
 
+
+
+
+
 // client
 eventMaker.emit("submit","Jhon","1234");
-// eventMaker.emit("submit","Jhon","12345");
+console.log("```````````````````````````````");
+eventMaker.emit("submit","Jhon","12345");

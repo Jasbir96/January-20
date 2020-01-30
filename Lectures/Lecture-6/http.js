@@ -6,10 +6,11 @@ const request = https.request(
   function(res) {
     let users = "";
     res.on("data", function(data) {
-      users += data;
+      users = users + data;
     });
     res.on("end", function() {
       fs.writeFileSync("users.json", users);
+
       // String=> object
       const usersJSON = JSON.parse(users);
       createUsers(usersJSON);
@@ -17,10 +18,15 @@ const request = https.request(
     });
   }
 );
+
 function createUsers(users) {
   for (let i = 0; i < users.length; i++) {
-    fs.writeFileSync(users[i]["username"]+".json", JSON.stringify(users[i]));
+    // let user = users[i];
+    // let userData = "";
+    // for (let key in user) {
+    //   userData += key + " : " + user[key];
+    // }
+    fs.writeFileSync(users[i]["username"] + ".json", JSON.stringify(users[i]));
   }
 }
-
 request.end();
