@@ -1,7 +1,13 @@
 // promise based lib
 const servicePromise = require("./Lib/servicePromise");
 
-const promise = servicePromise.downloadPromise("http://g-drive.com/img.jpeg");
-promise
-.then(function (data) { console.log("Img downloaded to " + data) }
-)
+async function helper() {
+    const dFile = await servicePromise.downloadPromise("http://g-drive.com/img.jpeg");
+    console.log(dFile);
+    const cFile=await servicePromise.compressPromise(dFile);
+    console.log(cFile);
+    const uFile=await servicePromise.uploadPromise(cFile);
+console.log(uFile);
+console.log("task completed");
+}
+helper();
