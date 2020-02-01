@@ -13,17 +13,32 @@ const socket = socketioClient.connect("http://localhost:3000");
 // question=> Join
 // blocking=> web api
 var user;
-
+// join
 reader.question("What's ur Name", function(userName) {
   console.log(`Hi ${userName}`);
-  const message = `${userName} has joined the chat`;
   user = userName;
+  const data = `${userName} has joined the chat`;
+  const message={};
+  message.userName=userName;
+  message.data=data;
+  message.type="Joining"
   socket.emit("joining", message);
 });
 // message
-
 reader.on("line", function(data) {
-  const message = `${user} : ${data}`;
+  // /msg Jhon jhvjhebfjhbd dfghgkj
+const message={};
+ if(data.startsWith("/msg")){
+message.type="private";
+const recievername=data.split(" ")[1];
+message.recieverName=recievername;
+message.data=data.split(" ").slice(2).join(" ");
+ }else{
+message.type="public";
+message.data=data;
+ }
+  // types=> public ,private 
+  // private , receiverName ,data 
   socket.emit("message", message);
 });
 
@@ -31,3 +46,4 @@ reader.on("line", function(data) {
 socket.on("notice", function(message) {
   console.log(message);
 });
+
