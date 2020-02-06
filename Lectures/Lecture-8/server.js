@@ -5,15 +5,28 @@ const socketio = require("socket.io");
 // http server is created
 const server = http.createServer(function(req, res) {});
 
-// socket.io => socket enabled
-const socketServer = socketio(server);
+// storage
+// name:id 
+// => steve , jhon
 
+// /msg to Jhon "gehkfgkhsfgfhdj"
+// socket.io => socket enabled
+
+const db={};
+const socketServer = socketio(server);
 socketServer.on("connection", function(socket) {
   socket.on("joining", function(message) {
-    socket.broadcast.emit("notice", message);
+    // save socket id here
+    db[message.userName]=socket.id;
+    socket.broadcast.emit("notice", message.data);
   });
   socket.on("message", function(message) {
-    socket.broadcast.emit("notice", message);
+
+    if(message.type=="private"){
+      socketServer.to(`${db[message.recieverName]}`).emit('notice', message.data);
+    }else{
+      socket.broadcast.emit("notice", message.data);
+    } 
   });
 });
 
