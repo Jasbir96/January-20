@@ -3,13 +3,15 @@ const help = require("./cmds/help");
 const forecast = require("./cmds/forecast");
 const todayFile = require("./cmds/today");
 const version = require("./cmds/version");
+const minimist=require("minimist");
 // input
 // node main.js today Mumbai
 // cli => input
-const input = process.argv.slice(2);
-const cmd = input[0];
-const location = input.slice(1).join(" ");
-console.log(location);
+const input = minimist(process.argv.slice(2));
+// console.log(input);
+const cmd = input["_"][0];
+const location = input.l||input.location;
+// console.log(location);
 // console.log(input);
 // today Mumbai
 if (cmd == "today") {
