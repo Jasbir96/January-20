@@ -36,7 +36,7 @@ async function helper() {
     console.log(f3data)
 
 }
-helper();
+helperki+ m();
 //output
 // Requesting: file1
 // Requesting: file2
