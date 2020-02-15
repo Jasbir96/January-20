@@ -26,36 +26,36 @@ for (let i = 0; i < orders.length; i++) {
     ul.appendChild(li);
 }
 body.appendChild(ul);
-body.insertBefore(p, ul);
+// body.insertBefore(p, ul);
 ul.setAttribute("id", "listItems")
 
 
 const img = document.createElement("img");
-// attribute => classes ,id,src,href
-// setAttribute
-// getAttribute
-// removeattribute
+// // attribute => classes ,id,src,href
+// // setAttribute
+// // getAttribute
+// // removeattribute
 img.setAttribute("src", "image.jpg");
 body.appendChild(img);
 
 // setInterval(function(){
 //     img.setAttribute("class","imgRound");
 // },2000);
-// setInterval(function(){
-//     img.removeAttribute("class","imgRound");
-// },2500);
-// to get all the elements
-// gives array of all li elements
+// // setInterval(function(){
+// //     img.removeAttribute("class","imgRound");
+// // },2500);
+// // to get all the elements
+// // gives array of all li elements
 
-// it also works on classes and Ids
-// const liArray = document.querySelectorAll("li");
-// gives all the elements with class of imground
-// const imgroundArray = document.querySelectorAll(".imground");
-// gives all the elements with id of listItems
-// 
-// const listItemsArray = document.querySelectorAll("#listItems");
-// document.getElementsByTagName()
-// document.getElementsByClassName()
+// // it also works on classes and Ids
+// // const liArray = document.querySelectorAll("li");
+// // gives all the elements with class of imground
+// // const imgroundArray = document.querySelectorAll(".imground");
+// // gives all the elements with id of listItems
+// // 
+// // const listItemsArray = document.querySelectorAll("#listItems");
+// // document.getElementsByTagName()
+// // document.getElementsByClassName()
 
 const liArray = document.getElementsByTagName("li");
 
@@ -66,9 +66,7 @@ l1.addEventListener("click", function () {
 
     l1.style.backgroundColor = "yellow";
 })
-// l2.addEventListener("mouseover", function () {
-//     l2.innerHTML = "<p>text changed through mouseover</p>";
-// })
+
 l2.addEventListener("click",function(){
     l2.innerHTML="<p>text changed by mouseout</p>";
 })
