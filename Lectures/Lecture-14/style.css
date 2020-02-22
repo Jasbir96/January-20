@@ -1,0 +1,12 @@
+.tools{
+    display: flex;
+    justify-content: center;
+}
+.img-size{
+    height:8vh;
+}
+.sticky{
+    height:10vh;
+    width:10vw;
+    background-color: yellow;
+}
