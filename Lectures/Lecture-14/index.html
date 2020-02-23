@@ -19,20 +19,20 @@
         <div class="tools">
             <div class="tool">
                 <div class="pencil" onclick="handleClick('pencil')">
-                    <img src="/NewIcons/Black_Pencil.svg" alt="" class="pencil-image img-size">
+                    <img src="NewIcons/Black_Pencil.svg" alt="" class="pencil-image img-size">
 
                     <div class="pencil options"></div>
                 </div>
             </div>
             <div class="tool">
                 <div class="eraser" onclick="handleClick('eraser')">
-                    <img src="/NewIcons/Eraser.svg" alt="" class="eraser-image img-size">
+                    <img src="NewIcons/Eraser.svg" alt="" class="eraser-image img-size">
                     <div class="earser options"></div>
                 </div>
             </div>
             <div class="tool">
-                <div class="sticky-Pad">
-                    <img src="/NewIcons/StickyNote.svg" alt="" class="sticky-pad img-size">
+                <div class="sticky-Pad" onclick="handleClick('sticky')">
+                    <img src="NewIcons/StickyNote.svg" alt="" class="sticky-pad img-size">
                 </div>
             </div>
         </div>
@@ -40,7 +40,8 @@
 
     <canvas class="board">
     </canvas>
-    <div class="sticky"></div>
+ 
+
     <!-- html => document -->
 
 
@@ -80,13 +81,16 @@
         function handleClick(tool) {
             if (tool == "pencil") {
                 ctx.strokeStyle = "white";
-            } else {
+            } else if(tool=="eraser"){
                 ctx.strokeStyle = "black";
+            }else if(tool=="sticky"){
+createSticky();
             }
 
         }
     </script>
     <script src="script.js"></script>
+    <script src="sticky.js"></script>
 </body>
 
 </html>
