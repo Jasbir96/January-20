@@ -20,16 +20,30 @@
             <div class="tool">
                 <div class="pencil" onclick="handleClick('pencil')">
                     <img src="NewIcons/Black_Pencil.svg" alt="" class="pencil-image img-size">
+                    <div class="pencil-options tool-options">
 
-                    <div class="pencil options"></div>
+                        <div class="pencil-slider">
+                            <input type="range" name="" id="" max="40" min="5" value="5">
+                        </div>
+                        <div class="pencil-colors">
+                            <div class=" color red" onclick=""></div>
+                            <div class="color blue"></div>
+                            <div class="color white"></div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
             <div class="tool">
                 <div class="eraser" onclick="handleClick('eraser')">
                     <img src="NewIcons/Eraser.svg" alt="" class="eraser-image img-size">
-                    <div class="earser options"></div>
+                    <div class="eraser-options tool-options"></div>
                 </div>
             </div>
+
+
+
+
             <div class="tool">
                 <div class="sticky-Pad" onclick="handleClick('sticky')">
                     <img src="NewIcons/StickyNote.svg" alt="" class="sticky-pad img-size">
@@ -40,7 +54,7 @@
 
     <canvas class="board">
     </canvas>
- 
+
 
     <!-- html => document -->
 
@@ -77,18 +91,7 @@
         // ctx.closePath();
 
     </script>
-    <script>
-        function handleClick(tool) {
-            if (tool == "pencil") {
-                ctx.strokeStyle = "white";
-            } else if(tool=="eraser"){
-                ctx.strokeStyle = "black";
-            }else if(tool=="sticky"){
-createSticky();
-            }
-
-        }
-    </script>
+    <script src="tool.js"></script>
     <script src="script.js"></script>
     <script src="sticky.js"></script>
 </body>

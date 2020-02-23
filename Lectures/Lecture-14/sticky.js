@@ -14,7 +14,5 @@ function createSticky(){
     stickyPad.appendChild(NavBar);
     stickyPad.appendChild(writingPad);
     writingPad.appendChild(textArea);
-
     body.appendChild(stickyPad);
-
 }

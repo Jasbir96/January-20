@@ -29,3 +29,50 @@
     height: 100%;
     width:97%;
 }
+
+
+.tool{
+    position: relative;
+}
+.tool-options{
+    height:6rem;
+    width:12rem;
+    background-color: chartreuse;
+    position: absolute;
+    top:4rem;left:-4rem;
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.pencil-slider{
+    height: 50%;
+    width:100%;
+    background-color: goldenrod;
+}
+.pencil-colors{
+    height: 50%;
+    width:100%;
+    background-color: green;
+    display: flex;
+    justify-content: space-evenly;
+}
+.color{
+    height:90%;
+    width:25%;
+    border-radius: 50%;
+    
+}
+.red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+
+}
+.white{
+    background-color: white;
+}
+
