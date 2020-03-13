@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+</style>
+<link rel="stylesheet" href="style.css">
+
+<body>
+    <!-- html => canvas -->
+    <div class="toolBar">
+        <div class="tools">
+            <div class="tool">
+                <div class="pencil" onclick="handleClick('pencil')">
+                    <img src="NewIcons/Black_Pencil.svg" alt="" class="pencil-image img-size">
+                    <div class="pencil-options tool-options">
+
+                        <div class="pencil-slider">
+                            <input type="range" name="" id="" max="40" min="5" value="5">
+                        </div>
+                        <div class="pencil-colors">
+                            <div class=" color red" onclick=""></div>
+                            <div class="color blue"></div>
+                            <div class="color white"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="tool">
+                <div class="eraser" onclick="handleClick('eraser')">
+                    <img src="NewIcons/Eraser.svg" alt="" class="eraser-image img-size">
+                    <div class="eraser-options tool-options"></div>
+                </div>
+            </div>
+
+
+
+
+            <div class="tool">
+                <div class="sticky-Pad" onclick="handleClick('sticky')">
+                    <img src="NewIcons/StickyNote.svg" alt="" class="sticky-pad img-size">
+                </div>
+            </div>
+            <div class="tool"><img src="NewIcons/Undo.svg" alt="" class="img-size undo"></div>
+            <div class="tool"><img src="NewIcons/Redo.svg" alt="" class="img-size redo"></div>
+        </div>
+    </div>
+
+    <canvas class="board">
+    </canvas>
+
+
+    <!-- html => document -->
+
+
+
+
+    <script>
+        // document => page dynamically change
+        const board = document.querySelector(".board");
+        board.height = window.innerHeight;
+        board.width = window.innerWidth;
+        // tool
+        // => change it using js you need to call get context
+        // canvasRenderingContext2d
+        const ctx = board.getContext("2d");
+        // color=> black
+        // ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+        // properties => whiteboard
+        // ctx.fillStyle="red";
+        // ctx.fillRect(0, 0, window.innerWidth/2, window.innerHeight/2);
+        ctx.strokeStyle = "black";
+        ctx.lineWidth = 7;
+        // path starts here
+        // ctx.beginPath();
+        // // move to particular point without drawing anything
+        // ctx.moveTo(100, 200);
+        // //draw from previous point to current point
+        // ctx.lineTo(300, 200);
+        // ctx.moveTo(100, 200);
+        // ctx.lineTo(700, 250);
+        // // to render on screen
+        // ctx.stroke();
+        // // path close
+        // ctx.closePath();
+
+    </script>
+    <script src="tool.js"></script>
+    <script src="script.js"></script>
+    <script src="sticky.js"></script>
+</body>
+
+</html>
