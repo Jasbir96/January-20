@@ -20,17 +20,17 @@
             <div class="tool">
                 <div class="pencil" onclick="handleClick('pencil')">
                     <img src="NewIcons/Black_Pencil.svg" alt="" class="pencil-image img-size">
+
                     <div class="pencil-options tool-options">
 
                         <div class="pencil-slider">
                             <input type="range" name="" id="" max="40" min="5" value="5">
                         </div>
                         <div class="pencil-colors">
-                            <div class=" color red" onclick=""></div>
-                            <div class="color blue"></div>
-                            <div class="color white"></div>
+                            <div class="color red" onclick="handleColorChange('red')"></div>
+                            <div class="color blue" onclick="handleColorChange('blue')"></div>
+                            <div class="color yellow" onclick="handleColorChange('yellow')"></div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -40,25 +40,26 @@
                     <div class="eraser-options tool-options"></div>
                 </div>
             </div>
-
-
-
-
             <div class="tool">
                 <div class="sticky-Pad" onclick="handleClick('sticky')">
                     <img src="NewIcons/StickyNote.svg" alt="" class="sticky-pad img-size">
                 </div>
             </div>
-            <div class="tool"><img src="NewIcons/Undo.svg" alt="" class="img-size undo"></div>
-            <div class="tool"><img src="NewIcons/Redo.svg" alt="" class="img-size redo"></div>
+            <div class="tool">
+                <img src="NewIcons/Undo.svg" alt="" class="img-size undo">
+            </div>
+            <div class="tool">
+                <img src="NewIcons/Redo.svg" alt="" class="img-size redo">
+            </div>
         </div>
     </div>
+
+
 
     <canvas class="board">
     </canvas>
 
 
-    <!-- html => document -->
 
 
 

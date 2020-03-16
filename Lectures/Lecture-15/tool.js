@@ -1,7 +1,7 @@
 console.log("Inside tool");
 let isActive="pencil";
 let pencilOptions=document.querySelector(".pencil-options")
-let eraserOptions=document.querySelector(".eraser-options")
+let eraserOptions=document.querySelector(".eraser-options");
 function handleClick(tool) {
     if (tool == "pencil") {
 if(isActive=="pencil"){
@@ -9,7 +9,7 @@ if(isActive=="pencil"){
 }else{
     isActive="pencil";
     
-    ctx.strokeStyle = "white";
+    ctx.strokeStyle = "black";
     eraserOptions.classList.remove("show")
     
 }
@@ -21,13 +21,21 @@ if(isActive=="pencil"){
         isActive="eraser";
         pencilOptions.classList.remove("show")
         
-            ctx.strokeStyle = "black";
+            ctx.strokeStyle = "white";
         }
 
     }else if(tool=="sticky"){
 createSticky();
     }
 }
+
+
+function handleColorChange(color){
+ctx.strokeStyle=color;    
+}
+
+
+
 
 let inputArr=document.getElementsByTagName("input");
 inputArr[0].addEventListener("change",function(e){

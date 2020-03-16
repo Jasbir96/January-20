@@ -12,6 +12,7 @@ board.addEventListener("mousedown", function(e) {
   ctx.beginPath();
   const { x, y } = getLocation(e.clientX, e.clientY);
   isMouseDown = true;
+
   let point = {
     x: x,
     y: y,
@@ -48,13 +49,33 @@ board.addEventListener("mouseup", function(e) {
   // closepath
 });
 
+// beginPath,moveTo(x,y)
+// lineTo(x1,y1) stroke
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const undo = document.querySelector(".undo");
 undo.addEventListener("click", function() {
+
   ctx.clearRect(0, 0, board.width, board.height);
+  
   undoStack.pop();
+  
   redraw();
 });
 // getLocation()
+
 function redraw() {
   for (let i = 0; i < undoStack.length; i++) {
     let { x, y, type, color, width } = undoStack[i];

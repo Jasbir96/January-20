@@ -1,4 +1,5 @@
 function createSticky() {
+
   const body = document.querySelector("body");
   // create
   const stickyPad = document.createElement("div");
@@ -7,6 +8,7 @@ function createSticky() {
   const close = document.createElement("div");
   const writingPad = document.createElement("div");
   const textArea = document.createElement("textArea");
+  
   // styling set
   minimize.setAttribute("class", "minimize");
   close.setAttribute("class", "close");
@@ -26,35 +28,53 @@ function createSticky() {
 
 
   let isMinimized = false;
+
   minimize.addEventListener("click", function() {
     if (isMinimized == false) {
+
+      
       writingPad.style.display = "none";
     }else{
         writingPad.style.display="block";
     }
     isMinimized=!isMinimized;
   });
+  
   close.addEventListener("click", function() {
     stickyPad.remove();
   });
 
+
+
+
   let isStickyDown = false;
+
   let initialX = null;
   let initialY = null;
+
   stickyPad.addEventListener("mousedown", function(e) {
     initialX = e.clientX;
     initialY = e.clientY;
     isStickyDown = true;
   });
+
+
+
+
   stickyPad.addEventListener("mousemove", function(e) {
     if (isStickyDown == false) return;
+
     let finalX = e.clientX;
     let finalY = e.clientY;
     let diffX = finalX - initialX;
     let diffY = finalY - initialY;
+    
     let { top, left } = stickyPad.getBoundingClientRect();
+    
     stickyPad.style.top = top + diffY + "px";
+
     stickyPad.style.left = left + diffX + "px";
+    
     initialX = finalX;
     initialY = finalY;
   });

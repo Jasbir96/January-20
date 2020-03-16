@@ -43,7 +43,9 @@
     top:4rem;left:-4rem;
     display: none;
 }
-
+.toolBar{
+    background-color: brown;
+}
 .show{
     display: block;
 }
@@ -79,4 +81,6 @@
 .green,.minimize{
     background-color: green;
 }
-
+.yellow{
+    background-color: yellow;
+}
