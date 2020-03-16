@@ -22,6 +22,7 @@ board.addEventListener("mousedown", function (e) {
     width: ctx.lineWidth
   };
   ctx.moveTo(x, y);
+  
   undoStack.push(point);
 });
 board.addEventListener("mousemove", function (e) {
@@ -30,6 +31,7 @@ board.addEventListener("mousemove", function (e) {
   const { x, y } = getLocation(e.clientX, e.clientY);
   ctx.lineTo(x, y);
   ctx.stroke();
+
   let point = {
     x: x,
     y: y,
