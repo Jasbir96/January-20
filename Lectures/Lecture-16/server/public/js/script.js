@@ -10,6 +10,7 @@ function getLocation(clientX, clientY) {
     x: clientX
   };
 }
+// mouse click
 board.addEventListener("mousedown", function (e) {
   ctx.beginPath();
   const { x, y } = getLocation(e.clientX, e.clientY);
@@ -22,7 +23,7 @@ board.addEventListener("mousedown", function (e) {
     width: ctx.lineWidth
   };
   ctx.moveTo(x, y);
-  
+  socket.emit("start",point);
   undoStack.push(point);
 });
 board.addEventListener("mousemove", function (e) {
@@ -39,6 +40,7 @@ board.addEventListener("mousemove", function (e) {
     width: ctx.lineWidth,
     type: "end"
   };
+  socket.emit("end",point);
   // lineTo
   undoStack.push(point);
 });
