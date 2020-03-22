@@ -1,0 +1,58 @@
+/* universal selector */
+/* presets */
+* {
+  margin: 0;
+  padding: 0;
+  /* ?? */
+  box-sizing: border-box;
+  font-size:1rem ;
+}
+
+html{
+  font-family: "Roboto", sans-serif;  
+}
+a {
+  text-decoration: none;
+}
+li {
+  list-style: none;
+}
+/* header section*/
+.main-heading {
+  color: white;
+  font-size: 400%;
+  /* line -> spacing add */
+  line-height: 125%;
+  letter-spacing: 0.2rem;
+}
+.showcase {
+  position: relative;
+  top: 35vh;
+  left: 23vw;
+  width: 40vw;
+}
+header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+    url("../img/header.jpg");
+  /* div => default height =>0 */
+  height: 100vh;
+  background-size: cover;
+  text-transform: uppercase;
+}
+.nav-ul {
+  display: flex;
+  justify-content: flex-end;
+}
+.nav-list {
+  margin-right: 1rem;
+  margin-top:1rem
+}
+.nav-links {
+  color:white;
+font-size:141%;
+padding:0.5rem;
+}
+.nav-links:hover{
+  border-bottom: 0.1rem solid red;
+
+}
