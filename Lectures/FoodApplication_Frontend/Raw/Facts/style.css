@@ -1,0 +1,26 @@
+/* inherited */
+.color-giver {
+  color: red;
+}
+/* universal selector */
+/* 
+* {
+  color: aqua !important;
+}
+ h1{
+  color:red;
+}
+ .green-color{
+  color:green;
+}
+#grey{
+  color:grey;
+}
+  */
+a{
+  color:red !important
+  ;
+}
+a{
+  color:blue;
+}

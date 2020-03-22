@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1 id="main-heading"></h1>
+  <script>
+    const clients = ["Everyone", "Fitness Freak", "Vegans", "Developers"];
+    const h1 = document.getElementById("main-heading");
+    function typewriter(clients, h1) {
+      // let count = 0;
+      let txt = "";
+      let isDeleting = false;
+      let wordIndex = 0;
+
+      function typer() {
+        // bounds
+        wordIndex = wordIndex % clients.length;
+        // current word
+        let word = clients[wordIndex];
+// 
+        if (isDeleting) {
+          txt = word.substring(0, txt.length - 1)
+        }
+  //  add 
+        else {
+          txt = word.substring(0, txt.length + 1);
+        }
+        if (txt.length == word.length && isDeleting == false) {
+          isDeleting = true;
+        } else if (isDeleting == true && txt == "") {
+          wordIndex++;
+          isDeleting = false;
+        }
+
+        h1.textContent = txt;
+
+        setTimeout(function () {
+
+          typer();
+        }, 300)
+      }
+      typer();
+    }
+
+
+
+    typewriter(clients, h1);
+  </script>
+</body>
+
+</html>
