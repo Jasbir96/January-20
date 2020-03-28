@@ -25,7 +25,7 @@
         <li class="nav-list"><a href="" class="nav-links">Details</a></li>
         <li class="nav-list"><a href="" class="nav-links">Reviews</a></li>
         <li class="nav-list"><a href="" class="nav-links">Plans</a></li>
-        <li class="nav-list"><a href="" class="nav-links">Signup</a></li>
+        <li class="nav-list"><a href="login.html" class="nav-links">Signup</a></li>
       </ul>
     </nav>
 
@@ -69,23 +69,68 @@
   </section>
   <section class="how-to">
     <h2>STEPS TO FOLLOW</h2>
-    <img src="./img/Capture.PNG" alt="" class="howto-img">
-    <div class="steps">
-      <div class="steps-container">
-        <div class="step-val">1</div>
-        <p class="steps-para">Choose the subscription plan that best fits your needs and sign up today</p>
+    <div class="steps-parent">
+      <div class="img-container">
+        <img src="./img/Capture.PNG" alt="" class="howto-img">
       </div>
-      <div class="steps-container">
-        <div class="step-val">2</div>
-        <p class="steps-para">Order your delicious meal using our mobile app or website. Or you can even call us!</p>
-      </div>
-      <div class="steps-container">
-        <div class="step-val">3</div>
-        <p class="steps-para">Enjoy your meal after less than 20 minutes. See you the next time!</p>
+      <div class="steps">
+        <div class="steps-container clearfix">
+          <div class="step-val">1</div>
+          <p class="steps-para">Choose the subscription plan that best fits your needs and sign up today</p>
+        </div>
+        <div class="steps-container clearfix">
+          <div class="step-val">2</div>
+          <p class="steps-para">Order your delicious meal using our mobile app or website. Or you can even call us!</p>
+        </div>
+        <div class="steps-container clearfix">
+          <div class="step-val">3</div>
+          <p class="steps-para">Enjoy your meal after less than 20 minutes. See you the next time!</p>
+        </div>
       </div>
     </div>
-    
+
+
   </section>
+  <section class="signup">
+    <h2>CONTACT US </h2>
+    <div class="signup-container">
+      <video class="bg-video__content" autoplay muted loop>
+        <source src="Avocado.mp4" type="video/mp4">
+      </video>
+      <form class="signup-form">
+        <div class="form-entry">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your Name">
+        </div>
+        <div class="form-entry">
+          <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Your Email"></div>
+        <div class="form-entry">
+          <label for="">How did you find us</label>
+          <select id="">
+            <option value="Friends" selected>Friends</option>
+            <option value="Advertisment">Advertisment</option>
+            <option value="Search">Search</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-entry">
+          <label for="comment">Drop us a Line</label>
+          <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-entry">
+          <input type="checkbox" name="" id="" checked>
+          <span>
+            I have read and agree with all the Privacy Policy and Terms Conditions
+          </span>
+        </div>
+        <div class="form-entry">
+          <button class="btn btn-full">SEND MESSAGE</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
   <script src="./js/script.js"></script>
 </body>
 

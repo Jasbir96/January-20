@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <header>
+
+
+    <nav>
+      <ul class="nav-ul">
+        <li class="nav-list"><a href="" class="nav-links">
+            Feature
+          </a></li>
+        <li class="nav-list"><a href="" class="nav-links">Details</a></li>
+        <li class="nav-list"><a href="" class="nav-links">Reviews</a></li>
+        <li class="nav-list"><a href="" class="nav-links">Plans</a></li>
+        <li class="nav-list"><a href="" class="nav-links">Signup</a></li>
+      </ul>
+    </nav>
+
+    <div class="showcase">
+      <h1 class="main-heading">
+        MEAL PLANS FOR <span class="span-detector"></span>
+      </h1>
+
+      <div class="btns-container">
+        <a href="" class="btn btn-full">Book Now </a>
+        <a href="" class="btn btn-empty">Show Me More</a></div>
+    </div>
+  </header>
+  <section class="features">
+    <h2>AWESOME FEATURES</h2>
+    <div class="container-parent">
+      <div class="container">
+        <i class="far fa-calendar-plus icon"></i>
+        <h3>365 DAYS/YEAR</h3>
+        <p class="features-para">
+          Never cook again! We really mean that. Our subscription plans include up to 365 days/year coverage. You can
+          also choose to order more flexibly if that's your style.
+        </p>
+      </div>
+      <div class="container">
+        <i class="fas fa-truck icon"></i>
+        <h3>30 MINUTES OR FREE</h3>
+        <p class="features-para">
+          You're only twenty minutes away from your delicious and super healthy meals delivered right to your home. We
+          work with the best chefs in each town to ensure that you're 100% happy.
+        </p>
+      </div>
+      <div class="container">
+        <i class="fas fa-carrot icon"></i>
+
+        <h3>100% ORGANIC</h3>
+        <p class="features-para">All our vegetables are fresh, organic and local. Animals are raised without added
+          hormones or antibiotics. Good for your health, the environment, and it also tastes better!</p>
+      </div>
+    </div>
+  </section>
+  <section class="how-to">
+    <h2>STEPS TO FOLLOW</h2>
+    <div class="steps-parent">
+      <div class="img-container">
+        <img src="./img/Capture.PNG" alt="" class="howto-img">
+      </div>
+      <div class="steps">
+        <div class="steps-container clearfix">
+          <div class="step-val">1</div>
+          <p class="steps-para">Choose the subscription plan that best fits your needs and sign up today</p>
+        </div>
+        <div class="steps-container clearfix">
+          <div class="step-val">2</div>
+          <p class="steps-para">Order your delicious meal using our mobile app or website. Or you can even call us!</p>
+        </div>
+        <div class="steps-container clearfix">
+          <div class="step-val">3</div>
+          <p class="steps-para">Enjoy your meal after less than 20 minutes. See you the next time!</p>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+  <section class="signup">
+    <h2>CONTACT US </h2>
+    <div class="signup-container">
+      <video class="bg-video__content" autoplay muted loop>
+        <source src="Avocado.mp4" type="video/mp4">
+      </video>
+
+      <form class="signup-form" action="/signup" method="POST">
+        <div class="form-entry">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your Name" name="name">
+        </div>
+        <div class="form-entry">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Your Email" name="email"></div>
+        <div class="form-entry">
+          <label for="">How did you find us</label>
+          <select id="" name="option">
+            <option value="Friends" selected>Friends</option>
+            <option value="Advertisment">Advertisment</option>
+            <option value="Search">Search</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-entry">
+          <label for="comment">Drop us a Line</label>
+          <textarea name="comment" id="comment" cols="30" rows="10" name="comment"></textarea>
+        </div>
+        <div class="form-entry">
+          <input type="checkbox" name="select" id="" checked >
+          <span>
+            I have read and agree with all the Privacy Policy and Terms Conditions
+          </span>
+        </div>
+        <div class="form-entry">
+          <button class="btn btn-full" type="submit">SEND MESSAGE</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <script src="./js/script.js"></script>
+</body>
+
+</html>

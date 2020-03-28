@@ -94,23 +94,20 @@ header {
 }
 .nav-links:hover {
   border-bottom: 0.1rem solid #e74c3c;
-
 }
 
-
 /* sticky styling */
-.sticky{
+.sticky {
   position: fixed;
   z-index: 2;
   background-color: white;
   /*  */
-width:100%;
-padding-bottom: 2rem;
+  width: 100%;
+  padding-bottom: 2rem;
 }
-.sticky .nav-links{
-  color:grey;
+.sticky .nav-links {
+  color: grey;
 }
-
 
 .btns-container {
   margin-top: 1.5rem;
@@ -127,7 +124,7 @@ padding-bottom: 2rem;
   border: 0.1rem solid #e74c3c;
   font-size: 80%;
 }
-.btn-full { 
+.btn-full {
   color: white;
   transition: transform 0.3s;
 }
@@ -135,9 +132,9 @@ padding-bottom: 2rem;
 .btn-empty {
   color: #e74c3c;
   background-color: transparent;
-  transition: transform 0.3s,color 0.3s, background-color 0.3s ;
+  transition: transform 0.3s, color 0.3s, background-color 0.3s;
 }
-.btn-full:hover{
+.btn-full:hover {
   transform: scale(1.2);
 }
 .btn-empty:hover {
@@ -163,5 +160,80 @@ padding-bottom: 2rem;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
 }
 
-.how-to{background-color: rgb(247, 247, 247);
+.how-to {
+  background-color: rgb(247, 247, 247);
+}
+.howto-img {
+/* image => vw */
+  width: 15vw;
+}
+.steps-parent {
+  display: flex;
+}
+.img-container{
+  width:40%;
+  text-align: center;
+}
+.steps-container{
+  /* display: flex; */
+/* height: 20%;   */
+margin-top:3rem;
+}
+.steps-container:first-child{
+  margin-top:4rem;
+}
+.steps-para{
+  font-size: 140%;
+}
+.step-val{
+  float:left;
+  margin-right: 1.5rem;
+    font-size: 140%;
+    height: 4rem;
+    width: 4rem;
+    border: 0.1rem solid red;
+    text-align: center;
+    border-radius: 50%;
+    padding-top: 1rem;
+    color:red;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+} 
+/* signup section */
+.signup{
+  background-color: black;
+  
+}
+.signup-container{
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top:-3rem;
+}
+.bg-video__content{
+  width:40%;
+}
+.signup-form{
+width:50%;
+transform: scale(0.8);
+}
+/* attribute selector */
+input[type="text"],
+input[type="email"],
+select,
+textarea{
+  width:100%;
+  margin:1rem 0 ;
+  padding: 1rem 0.5rem;
+}
+/* button */
+.form-entry:last-child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6rem;
 }
