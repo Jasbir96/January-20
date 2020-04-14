@@ -1,8 +1,11 @@
 const express = require("express")
 const userRouter = express.Router();
-const {getUser,getAllUsers,updateUser,removeUser,createUser}=require("../controller/userController")
+// const { getUser, getAllUsers, updateUser, removeUser, createUser } = require("../controller/userController")
+const { signup, login } = require("../controller/authController");
+// signup
+userRouter.post("/signup",signup)
+userRouter.post("/login",login)
 
-// singup
 // login 
 // forgetPassword
 //resetPassword
@@ -11,13 +14,13 @@ const {getUser,getAllUsers,updateUser,removeUser,createUser}=require("../control
 
 
 // admin 
-userRouter.route("").
-get(getAllUsers)
-.post(createUser);
+// userRouter.route("").
+//   get(getAllUsers)
+//   .post(createUser);
 
-userRouter
-.route("/:userId")
-.patch(updateUser)
-.delete(removeUser)
-.get(getUser);
-module.exports=userRouter;
+// userRouter
+//   .route("/:userId")
+//   .patch(updateUser)
+//   .delete(removeUser)
+//   .get(getUser);
+module.exports = userRouter;

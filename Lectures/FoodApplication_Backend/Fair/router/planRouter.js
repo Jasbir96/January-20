@@ -1,13 +1,13 @@
 const express = require("express")
 const planRouter = express.Router();
 const {getAllPlans,getPlan,removePlan,createPlan,updatePlan}=require("../controller/planController")
-
+const {protectRoute}=require("../controller/authController")
 
 
 planRouter
 .route("")
 .get(getAllPlans)
-.post(createPlan);
+.post(protectRoute,createPlan);
 
 planRouter
 .route("/:planId")
