@@ -8,7 +8,6 @@ mongoose.connect("mongodb+srv://admin:1234abc@cluster0-ufy4c.mongodb.net/test?re
 }).catch(function (err) {
   console.log(err);
 })
-
 // schema=> set of rules => every entity will follow
 // speceifications
 const carSchema = new mongoose.Schema({
@@ -26,7 +25,6 @@ const carSchema = new mongoose.Schema({
     type: Number,
     required: true,
   }
-
 })
 // prototype 
 app.use(express.json());
