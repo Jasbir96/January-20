@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 // mongodb cloud db 
-mongoose.connect("mongodb+srv://admin:1234abc@cluster0-ufy4c.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(function (conn) {
+mongoose.connect(config.DB_LINK, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(function (conn) {
   // console.log("Connection to mongodb established");
   // console.log(conn)
   console.log("User Db connected");

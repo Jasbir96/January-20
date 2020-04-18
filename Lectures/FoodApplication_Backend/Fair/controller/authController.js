@@ -1,7 +1,8 @@
 // signup
 //  user create
 const userModel = require("../model/userModel");
-
+const jwt = require("jsonwebtoken");
+const { JWT_SECRET } = require("../configs/config");
 async function signup(req, res) {
   try {
     const user = await userModel.create(req.body);
@@ -19,10 +20,15 @@ async function login(req, res) {
     const user = await userModel.findOne({ email }).select("+password");
     if (user) {
       if (password == user.password) {
-        // jwt 
+        // jwt
+        const { _id } = user;
+        const token = jwt.sign({ id: _id }, JWT_SECRET, {
+          expiresIn: Date.now() + 1000 * 60 * 30
+        })
         res.status(200).json({
           status: "successfull",
-          user
+          user,
+          token
         })
       } else {
         throw new Error("user or password didn't match")
@@ -38,7 +44,7 @@ async function login(req, res) {
   }
 }
 async function protectRoute(req, res) {
-// 
+  // 
 }
 // login
 // user verify

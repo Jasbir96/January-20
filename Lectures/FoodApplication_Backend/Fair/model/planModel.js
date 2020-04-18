@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const config = require("../configs/config");
 // mongodb cloud db 
-mongoose.connect("mongodb+srv://admin:1234abc@cluster0-ufy4c.mongodb.net/test?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex:true }).then(function (conn) {
+mongoose.connect(config.DB_LINK, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(function (conn) {
   // console.log("Connection to mongodb established");
   // console.log(conn)
   console.log("Plan Db connected");
@@ -29,7 +30,7 @@ const planSchema = new mongoose.Schema({
     min: [1, "Plan rating can't be less than 1"],
     max: [10, "Plan rating can't be  more tha 10"]
   },
-  slug:String,
+  slug: String,
   price: {
     type: Number,
     required: true,
@@ -42,7 +43,7 @@ const planSchema = new mongoose.Schema({
       validator: function () {
         return this.price > this.discount
       },
-      message: "discount must be less than price"  
+      message: "discount must be less than price"
     }
 
   }
