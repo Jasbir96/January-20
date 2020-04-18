@@ -19,6 +19,7 @@ async function login(req, res) {
     const user = await userModel.findOne({ email }).select("+password");
     if (user) {
       if (password == user.password) {
+        // jwt 
         res.status(200).json({
           status: "successfull",
           user
@@ -37,7 +38,7 @@ async function login(req, res) {
   }
 }
 async function protectRoute(req, res) {
-
+// 
 }
 // login
 // user verify

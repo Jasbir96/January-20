@@ -13,7 +13,7 @@ app.get("/tokenSigner", function (req, res) {
   })
 })
 // token=> payload => _id =>search => user => role
-app.get("/sensitiveData", tokenVerfier,allowedroles, sensitiveData)
+app.get("/sensitiveData", tokenVerfier, sensitiveData)
 
 function tokenVerfier(req, res,next) {
   try {
@@ -35,6 +35,7 @@ function sensitiveData(req, res) {
     status: "you have accessed sensitive data"
   })
 }
+console.log("jmbvmjczxv");
 app.listen(4000, function () {
   console.log("Server has started at port 4000");
 })
