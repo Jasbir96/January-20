@@ -1,26 +1,25 @@
 const express = require("express")
 const userRouter = express.Router();
-// const { getUser, getAllUsers, updateUser, removeUser, createUser } = require("../controller/userController")
-const { signup, login } = require("../controller/authController");
+const { getAllUsers, createUser } = require("../controller/userController");
+const { getMe } = require("../controller/userController");
+const { signup, login, protectRoute, isAuthorized, forgetPassword, resetPassword } = require("../controller/authController");
 // signup
-userRouter.post("/signup",signup)
-userRouter.post("/login",login)
-
+userRouter.post("/signup", signup)
+userRouter.post("/login", login)
+userRouter.get("/profilePage", protectRoute, getMe);
+userRouter.patch("/forgetPassword", forgetPassword)
+userRouter.patch("/resetPassword/:tokeplan", resetPassword);
 // login 
 // forgetPassword
 //resetPassword
-
-
-
-
-// admin 
-// userRouter.route("").
-//   get(getAllUsers)
-//   .post(createUser);
-
 // userRouter
 //   .route("/:userId")
 //   .patch(updateUser)
 //   .delete(removeUser)
 //   .get(getUser);
+// admin
+userRouter.use(protectRoute, isAuthorized(["admin"]));
+userRouter.route("").
+  get(getAllUsers)
+  .post(createUser);
 module.exports = userRouter;

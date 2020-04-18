@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const config = require("../configs/config");
+const crypto = require("crypto");
 // mongodb cloud db 
 mongoose.connect(config.DB_LINK, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }).then(function (conn) {
   // console.log("Connection to mongodb established");
@@ -20,7 +22,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     minlength: 7,
     required: [true, "password is required"],
-    select:false
+    select: false
   }, confirmPassword: {
     type: String,
     required: [true, "confirmPassword is required"],
@@ -35,11 +37,27 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ["admin", "restaurant owner", "Delivery Boy", "user"],
     default: "user"
-  }
+  },
+  resetToken: String,
+  expiresIn: String
 })
 
 userSchema.pre("save", function () {
   this.confirmPassword = undefined;
 })
+userSchema.methods.createToken = function () {
+  const token = crypto.randomBytes(32).toString("hex");
+  // user
+  this.resetToken = token
+  this.expiresIn = Date.now() + 10 * 1000 * 60;
+  // 
+  return token;
+}
+userSchema.methods.resetPasswordhelper = function (password, confirmPassword) {
+  this.password = password;
+  this.confirmPassword = confirmPassword;
+  this.resetToken = undefined;
+  this.expiresIn = undefined;
+}
 const userModel = mongoose.model("janUserModel", userSchema);
 module.exports = userModel;
