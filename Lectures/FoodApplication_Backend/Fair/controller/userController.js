@@ -39,6 +39,7 @@ async function getAllUsers(req, res) {
       status: "successfull"
     })
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       err
     })

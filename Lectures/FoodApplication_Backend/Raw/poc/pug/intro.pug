@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title PugJS
+  body
+    h1 Page generated through pug.js
+    p Lorem ipsum dolor sit amet.
+    //- multiple line text
+    p.
+      i am multiple line text inside 
+      an paragraph tag
+    p
+      | i am multiple line text inside 
+      | an paragraph tag
+    p.myclass.
+       Lorem ipsum dolor sit amet.
+       Lorem ipsum dolor sit amet.
+    p#myid Lorem, ipsum dolor.
+    .div
+    #myid
+    a(href="https://www.google.com") Go to google
+    -const list =["mac","windows","linux","unix"];
+    ul
+      for item in list
+        li 
+          a=item
+      else
+          li No product Available
+//- pug -w ./ -P

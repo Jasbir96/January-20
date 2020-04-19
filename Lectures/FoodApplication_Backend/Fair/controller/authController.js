@@ -1,6 +1,7 @@
 // signup
 //  user create
 const userModel = require("../model/userModel");
+const Email = require("../utility/email");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../configs/config");
 async function signup(req, res) {
@@ -57,6 +58,7 @@ async function protectRoute(req, res, next) {
         const decryptedData = jwt.verify(token, JWT_SECRET);
         if (decryptedData) {
           const id = decryptedData.id;
+          console.log(id);
           // console.log(decryptedData)
           req.id = id;
           next();
@@ -99,8 +101,10 @@ async function isAdmin(req, res, next) {
 function isAuthorized(roles) {
   return async function (req, res, next) {
     try {
-      const { id } = req.id;
+
+      const { id } = req;
       const user = await userModel.findById(id);
+      console.log(user);
       const { role } = user;
       if (roles.includes(role) == true) {
         next()
@@ -108,6 +112,7 @@ function isAuthorized(roles) {
         throw new Error("You are not authorized ");
       }
     } catch (err) {
+      console.log(err);
       res.status(403).json(
         { err }
       )
@@ -119,15 +124,26 @@ async function forgetPassword(req, res) {
   try {
     const { email } = req.body;
     const user = await userModel.findOne({ email: email });
+    // const user = users[0];
     if (user) {
       // console.log(user);
       const token = user.createToken();
       // db => save
-      // db => intgrity ,consistency
+      // db => integrity ,consistency
       await user.save({ validateBeforeSave: false });
+      // email 
       const resetPasswordLink = `http://localhost:3000/api/users/resetPassword/${token}`
+      const emailOptions = {};
+      emailOptions.html = `<h1>Please click on the link to reset your password </h1>
+      <p>${resetPasswordLink}</p>
+      `;
+      emailOptions.to = email;
+      emailOptions.from = "customersupport@everyone.com";
+      emailOptions.subject = "Reset Password Link"
+      await Email(emailOptions);
       res.status(200).json({
-        resetPasswordLink
+        resetPasswordLink,
+        status: `Email send to ${email}`
       })
     } else {
       throw new Error("You does not exist");
@@ -139,7 +155,6 @@ async function forgetPassword(req, res) {
     })
   }
 }
-
 async function resetPassword(req, res) {
   try {
     const token = req.params.token;
