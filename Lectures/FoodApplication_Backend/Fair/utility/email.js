@@ -4,9 +4,10 @@ module.exports = async function emailSender(options) {
   //  1. transport => configuration
   // configurations set email
   const transport = nodemailer.createTransport({
-    host: "smtp.gmail.com",
+    tls: {
+      rejectUnauthorized: false
+    },
     service: "gmail",
-    port: 2525,
     auth: {
       // email Id
       user: config.EMAIL_ID,
@@ -19,7 +20,7 @@ module.exports = async function emailSender(options) {
     from: options.from,
     to: options.to,
     subject: options.subject,
-    html: options.html 
+    html: options.html
   }
   // 3. sendMail
   await transport.sendMail(mailOptions);

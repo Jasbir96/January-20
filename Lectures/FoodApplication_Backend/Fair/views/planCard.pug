@@ -1,0 +1,23 @@
+.signup-child
+        .signup-header
+          h3 #{plan.name}
+          .signup-pricing
+            span.pricing $#{plan.price}
+            | /month
+            p That’s only 13.30$ per meal
+        .signup-features
+          ul
+            li
+              i.fas.fa-check.small-icon  
+              | #{plan.description}
+            li
+              i.fas.fa-check.small-icon  
+              | #{plan.ratingsAverage}/10 ratings
+            li
+              i.fas.fa-check.small-icon  
+              | Access to newest creations
+            li
+              i.fas.fa-check.small-icon  
+              | Free delivery
+          .signup-button
+            a.btn.btn-full(href='#') I'm hungry

@@ -1,10 +1,18 @@
 const express = require("express");
 const app = express();
 
-app.use(express.json());
 const planRouter = require("./router/planRouter");
 const userRouter = require("./router/userRouter");
+const viewRouter = require("./router/viewRouter");
 
+app.use(express.json());
+// 
+app.use(express.static("public"));
+// templating engine
+app.set("view engine", "pug");
+// templates address
+app.set("views", "views");
+app.use("/", viewRouter);
 app.use("/api/plans", planRouter)
 app.use("/api/users", userRouter)
 // wildcard
