@@ -12,7 +12,7 @@ async function signup(req, res) {
       user
     })
   } catch (err) {
-    res.status(400).json({ err })
+    res.status(400).json({ err: err.message })
   }
 }
 
@@ -42,7 +42,7 @@ async function login(req, res) {
   } catch (err) {
     console.log(err);
     res.json({
-      err
+      err: err.message
     })
   }
 }
@@ -76,7 +76,7 @@ async function protectRoute(req, res, next) {
     // console.log(err);
     res.status(400).json({
       status: "unsuccessfull",
-      err
+      err: err.message
     })
   }
 }
@@ -94,7 +94,7 @@ async function isAdmin(req, res, next) {
       throw new Error("User not found");
     }
   } catch (err) {
-    res.status(400).json({ err: err });
+    res.status(400).json({ err: err.message });
   }
 }
 
@@ -114,7 +114,7 @@ function isAuthorized(roles) {
     } catch (err) {
       console.log(err);
       res.status(403).json(
-        { err }
+        { err: err.message }
       )
     }
   };
@@ -151,7 +151,7 @@ async function forgetPassword(req, res) {
   } catch (err) {
     console.log(err);
     res.status(400).json({
-      err
+      err: err.message
     })
   }
 }
@@ -176,7 +176,7 @@ async function resetPassword(req, res) {
   } catch (err) {
     console.log(err);
     res.status(400).json({
-      err
+      err: err.message
     })
   }
   // resetPassword/svmbamvbd
