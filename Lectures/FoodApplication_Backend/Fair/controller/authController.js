@@ -15,7 +15,6 @@ async function signup(req, res) {
     res.status(400).json({ err: err.message })
   }
 }
-
 async function login(req, res) {
   try {
     const { email, password } = req.body;
@@ -28,11 +27,14 @@ async function login(req, res) {
         const token = jwt.sign({ id: _id }, JWT_SECRET, {
           expiresIn: Date.now() + 1000 * 60 * 30
         })
-        res.status(200).json({
+        // console.log("I was here");
+        // console.log(token);
+        res.cookie("jwt", token, { httpOnly: true });
+        return res.status(200).json({
           status: "successfull",
-          user,
           token
         })
+
       } else {
         throw new Error("user or password didn't match")
       }
@@ -40,6 +42,7 @@ async function login(req, res) {
       throw new Error("user or password didn't match ");
     }
   } catch (err) {
+    console.log("Inside catch")
     console.log(err);
     res.json({
       err: err.message
@@ -50,36 +53,81 @@ async function login(req, res) {
 async function protectRoute(req, res, next) {
   try {
     // headers 
+    let token
     if (req.headers && req.headers.authorization) {
-      const token = req.headers.authorization.split(" ").pop();
+      token = req.headers.authorization.split(" ").pop();
       // console.log(token)
-
-      if (token) {
-        const decryptedData = jwt.verify(token, JWT_SECRET);
-        if (decryptedData) {
-          const id = decryptedData.id;
-          console.log(id);
-          // console.log(decryptedData)
-          req.id = id;
-          next();
-        } else {
-          throw new Error("Invalid Token");
-        }
+    } else if (req.cookies && req.cookies.jwt) {
+      token = req.cookies.jwt;
+    }
+    else {
+      throw new Error("Please provide a token");
+    }
+    if (token) {
+      const decryptedData = jwt.verify(token, JWT_SECRET);
+      if (decryptedData) {
+        const id = decryptedData.id;
+        // console.log(id);
+        // console.log(decryptedData)
+        req.id = id;
+        next();
       } else {
-        throw new Error("Please login again to access this route ");
+        throw new Error("Invalid Token");
       }
     } else {
-      throw new Error("Please provide a token");
+      throw new Error("Please login again to access this route ");
     }
 
   } catch (err) {
     // console.log(err);
-    res.status(400).json({
+    res.status(200).json({
       status: "unsuccessfull",
       err: err.message
     })
   }
 }
+async function isUserLoggedIn(req, res, next) {
+  try {
+    // headers 
+    let token
+    if (req.headers && req.headers.authorization) {
+      token = req.headers.authorization.split(" ").pop();
+      // console.log(token)
+    } else if (req.cookies && req.cookies.jwt) {
+      token = req.cookies.jwt;
+    }
+    else {
+      console.log(token)
+      return next();
+    }
+    console.log(token);
+    if (token) {
+      const decryptedData = jwt.verify(token, JWT_SECRET);
+      if (decryptedData) {
+        const id = decryptedData.id;
+        // console.log(id);
+        // console.log(decryptedData)
+        req.id = id;
+        req.user = await userModel.findById(id);
+        console.log(req.user);
+        return next();
+      } else {
+        return next();
+      }
+    } else {
+      return next();
+    }
+
+  } catch (err) {
+    console.log("I was in catch user");
+    res.status(200).json({
+      status: "unsuccessfull",
+      err: err.message
+    })
+  }
+}
+
+
 // authorization
 async function isAdmin(req, res, next) {
   try {
@@ -119,6 +167,12 @@ function isAuthorized(roles) {
     }
   };
 }
+async function logout(req, res) {
+  res.cookie("jwt", "bgfdgcgf", { expires: new Date(Date.now() + 100) });
+  res.json({
+    status: "logged Out"
+  })
+}
 
 async function forgetPassword(req, res) {
   try {
@@ -155,6 +209,25 @@ async function forgetPassword(req, res) {
     })
   }
 }
+async function resetPasswordHelper(req, res) {
+  try {
+    let token = req.params.token;
+    let user = await userModel.findOne({
+      resetToken: token
+    })
+    if (user) {
+      req.token = token;
+      return next()
+    } else {
+      throw new Error(" Invalid URL ");
+    }
+  }catch(err){
+    console.log(err);
+  }
+
+
+
+}
 async function resetPassword(req, res) {
   try {
     const token = req.params.token;
@@ -190,8 +263,8 @@ module.exports.isAdmin = isAdmin;
 module.exports.isAuthorized = isAuthorized;
 module.exports.forgetPassword = forgetPassword;
 module.exports.resetPassword = resetPassword;
-
-
+module.exports.isUserLoggedIn = isUserLoggedIn;
+module.exports.logout = logout;
 
 // login
 // user verify

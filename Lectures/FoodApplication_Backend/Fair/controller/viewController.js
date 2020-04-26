@@ -7,22 +7,46 @@ function getTestPage(req, res) {
 }
 async function getPlansListing(req, res) {
   // 2
+  const user = req.user;
+  cons
   const plans = await planModel.find();
   res.render("plansListing.pug", {
     title: "Plans page",
     // 3
-    plans: plans
+    plans: plans,
+    user
   })
 }
 async function getLoginPage(req, res) {
+  const user = req.user;
+  console.log(req.user);
   res.render("login.pug", {
-    title: "Login Page"
+    title: "Login Page",
+    user
   })
 }
-async function getHomePage(req,res){
-  res.render("Home.pug",{title:"Home Page"})
+async function getHomePage(req, res) {
+  const user = req.user;
+  res.render("Home.pug", {
+    title: "Home Page",
+    user
+  })
+}
+async function getProfilePage(req, res) {
+  const user = req.user;
+  res.render("profilePage.pug", {
+    title: "Profile Page",
+    user
+  })
+}
+async function getForgetPasswordPage(req, res) {
+  res.render("forgetPassword.pug", {
+    title: "ForgetPassword",
+  })
 }
 module.exports.getTestPage = getTestPage;
 module.exports.getPlansListing = getPlansListing;
-module.exports.getLoginPage=getLoginPage;
-module.exports.getHomePage=getHomePage;
+module.exports.getLoginPage = getLoginPage;
+module.exports.getHomePage = getHomePage;
+module.exports.getProfilePage = getProfilePage;
+module.exports.getForgetPasswordPage = getForgetPasswordPage;

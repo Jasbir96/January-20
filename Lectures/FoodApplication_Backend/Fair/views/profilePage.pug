@@ -1,0 +1,10 @@
+extends base
+block content
+  h2 User Page
+  .profile-container
+    h2
+      p #{user.name}
+      p #{user.email}
+      if user.role=="admin"
+        a(href="/manageUsers") Manage Users
+        a(href="/managePlans") Manage Plans

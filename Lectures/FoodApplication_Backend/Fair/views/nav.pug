@@ -1,12 +1,18 @@
-nav.sticky(style="position:relative")
+nav.sticky(style="position:relative;")
   ul.navigation
     li.nav-line
-      a.white-anchors(href='') FEATURES
+      a.white-anchors(href='/') FEATURES
     li.nav-line
-      a.white-anchors(href='') DETAILS
+      a.white-anchors(href='/') DETAILS
     li.nav-line
       a.white-anchors(href='') REVIEWS
     li.nav-line
-      a.white-anchors(href='') PLANS
-    li.nav-line
-      a.white-anchors(href='') SIGN UP
+      a.white-anchors(href='/plans') PLANS
+    if user
+        li.nav-line
+          a.white-anchors(href='/profilePage') #{user.name}
+        li.nav-line
+          a.white-anchors(href='javascript:;').logout LOGOUT
+    else
+        li.nav-line
+          a.white-anchors(href='/login') LOGIN
