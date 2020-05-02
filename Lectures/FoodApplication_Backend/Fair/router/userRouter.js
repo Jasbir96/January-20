@@ -1,14 +1,38 @@
 const express = require("express")
 const userRouter = express.Router();
-const { getAllUsers, createUser } = require("../controller/userController");
+const { getAllUsers, createUser, updateProfileHandler } = require("../controller/userController");
 const { getMe } = require("../controller/userController");
-const { signup, login, protectRoute, isAuthorized, forgetPassword, resetPassword, logout } = require("../controller/authController");
+const { signup, login, protectRoute, isAuthorized, forgetPassword, resetPassword, logout, } = require("../controller/authController");
+const multer = require("multer");
+const multerstorage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/img/users");
+  },
+  filename: function (req, file, cb) {
+    cb(null, `user-${Date.now()}.jpeg`)
+  }
+})
+// file => type
+const fileFilter = function (req, file, cb) {
+  if (file.mimetype.startsWith("image")) {
+    cb(null, true)
+  } else {
+    cb(new Error("Not an image! Please upload one"), false)
+  }
+}
+const upload = multer({
+  storage: multerstorage,
+  fileFilter: fileFilter
+});
+//  file save => name , buffer => extension, 
+//  destination ,fileName
+userRouter.post("/updateProfile", upload.single("photo"), protectRoute, updateProfileHandler)
 // signup
 userRouter.post("/signup", signup)
 userRouter.post("/login", login)
 userRouter.get("/profilePage", protectRoute, getMe);
 userRouter.patch("/forgetPassword", forgetPassword)
-userRouter.patch("/resetPassword/:tokeplan", resetPassword);
+userRouter.patch("/resetPassword/:token", resetPassword);
 userRouter.get("/logout", logout);
 // login 
 // forgetPassword

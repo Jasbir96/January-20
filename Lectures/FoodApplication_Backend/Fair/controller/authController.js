@@ -173,7 +173,6 @@ async function logout(req, res) {
     status: "logged Out"
   })
 }
-
 async function forgetPassword(req, res) {
   try {
     const { email } = req.body;
@@ -186,13 +185,13 @@ async function forgetPassword(req, res) {
       // db => integrity ,consistency
       await user.save({ validateBeforeSave: false });
       // email 
-      const resetPasswordLink = `http://localhost:3000/api/users/resetPassword/${token}`
+      const resetPasswordLink = `http://localhost:3000/resetPassword/${token}`
       const emailOptions = {};
       emailOptions.html = `<h1>Please click on the link to reset your password </h1>
       <p>${resetPasswordLink}</p>
       `;
       emailOptions.to = email;
-      emailOptions.from = "customersupport@everyone.com";
+      emailOptions.from = "pepcodingdev@gmail.com";
       emailOptions.subject = "Reset Password Link"
       await Email(emailOptions);
       res.status(200).json({
@@ -209,24 +208,27 @@ async function forgetPassword(req, res) {
     })
   }
 }
-async function resetPasswordHelper(req, res) {
+async function handleResetRequest(req, res, next) {
   try {
-    let token = req.params.token;
-    let user = await userModel.findOne({
-      resetToken: token
-    })
+    const { token } = req.params;
+    console.log(token);
+    let user = await userModel.findOne({ resetToken: token });
+
     if (user) {
+
       req.token = token;
-      return next()
+      console.log("220 " + req.token)
+      // console.log("I was inside");
+      next();
+
+      // token verify 
     } else {
-      throw new Error(" Invalid URL ");
+      res.redirect("/somethingWentWrong");
     }
-  }catch(err){
-    console.log(err);
+
+  } catch (err) {
+    res.redirect("/somethingWentWrong");
   }
-
-
-
 }
 async function resetPassword(req, res) {
   try {
@@ -256,6 +258,7 @@ async function resetPassword(req, res) {
   // db => svmbamvbd=> user search => user
   // user => password
 }
+
 module.exports.signup = signup;
 module.exports.login = login;
 module.exports.protectRoute = protectRoute;
@@ -265,7 +268,7 @@ module.exports.forgetPassword = forgetPassword;
 module.exports.resetPassword = resetPassword;
 module.exports.isUserLoggedIn = isUserLoggedIn;
 module.exports.logout = logout;
-
+module.exports.handleResetRequest = handleResetRequest;
 // login
 // user verify
 // protect Route 

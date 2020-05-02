@@ -39,7 +39,11 @@ const userSchema = new mongoose.Schema({
     default: "user"
   },
   resetToken: String,
-  expiresIn: String
+  expiresIn: String,
+  profileImage: {
+    type: String,
+    default: "/img/users/default.jpeg"
+  }
 })
 
 userSchema.pre("save", function () {

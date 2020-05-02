@@ -4,6 +4,9 @@ let loginBtn = d.querySelector(".login-button");
 let signupForm = d.querySelector(".signup");
 let logoutBtn = d.querySelector(".logout");
 let forgetForm = d.querySelector(".forgetPassword");
+let resetPasswordForm = d.querySelector(".resetPassword");
+let updateProfile = d.querySelector(".updateProfile");
+
 async function loginHelper(email, password) {
   const response = await axios.post("/api/users/login", {
     email, password
@@ -32,10 +35,28 @@ async function logoutHelper() {
   }
 }
 async function forgetPasswordHelper(email) {
-
   const response = await axios.patch("/api/users/forgetPassword", { email });
-  if(response.data.status){
+  if (response.data.status) {
     alert("Email Send to user");
+  }
+}
+async function resetPasswordHelper(password, confirmPassword, resetToken) {
+  const response = await axios.patch(`/api/users/resetPassword/${resetToken}`,
+    {
+      password, confirmPassword
+    })
+  if (response.data.success == "user password updated login with new password") {
+    alert("Your password has been reset");
+    location.assign("/login");
+  } else {
+    alert("something wnet wrong")
+  }
+}
+async function updateProfileHelper(formData) {
+  let response = await axios.patch("/api/users/updateProfile", formData);
+  if (response.data.success) {
+    alert("profile Image uploaded")
+    location.reload();
   }
 }
 if (signupForm) {
@@ -72,5 +93,25 @@ if (forgetForm) {
     let email = d.querySelector(".email").value;
     forgetPasswordHelper(email);
 
+  })
+}
+
+if (resetPasswordForm) {
+  resetPasswordForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    let password = d.querySelector(".password").value;
+    let confirmPassword = d.querySelector(".confirmPassword").value;
+    let token = d.querySelector("button[data-token]");
+    resetPasswordHelper(password, confirmPassword, token);
+
+  })
+}
+if (updateProfile) {
+  updateProfile.addEventListener("change", function (e) {
+    e.preventDefault();
+    // multipart data send 
+    const formData = new FormData();
+    formData.append("user", updateProfile.files[0]);
+    updateProfileHelper(formData);
   })
 }

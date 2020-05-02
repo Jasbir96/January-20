@@ -1,5 +1,5 @@
 const userModel = require("../model/userModel");
-
+const sharp = require("sharp");
 async function getMe(req, res) {
   try {
     const id = req.id;
@@ -44,6 +44,16 @@ async function getAllUsers(req, res) {
       err
     })
   }
+}
+async function updateProfileHandler(req, res) {
+  const id = req.id;
+  const user = await userModel.findById(id);
+
+  await sharp(req.file.path).toFormat("jpeg").jpeg({ quality: 60 }).toFile(`public/img/users/${Date.now()}.jpeg`);
+  // 
+  res.status(200).json({
+    
+  })
 }
 module.exports.getAllUsers = getAllUsers;
 // module.exports.getUser=getUser;

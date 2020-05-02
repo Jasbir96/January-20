@@ -5,6 +5,9 @@ block content
     h2
       p #{user.name}
       p #{user.email}
+      p 
+        img(src=`${user.profileImage}`)
+      input(type="file", name="").updateProfile
       if user.role=="admin"
         a(href="/manageUsers") Manage Users
         a(href="/managePlans") Manage Plans

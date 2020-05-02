@@ -44,9 +44,19 @@ async function getForgetPasswordPage(req, res) {
     title: "ForgetPassword",
   })
 }
+async function getResetPage(req, res) {
+  const { token } = req;
+  res.render("resetPassword", { token });
+
+}
+async function getSomethingWentWrong(req, res) {
+  res.render("somethingWentWrong");
+}
 module.exports.getTestPage = getTestPage;
 module.exports.getPlansListing = getPlansListing;
 module.exports.getLoginPage = getLoginPage;
 module.exports.getHomePage = getHomePage;
 module.exports.getProfilePage = getProfilePage;
 module.exports.getForgetPasswordPage = getForgetPasswordPage;
+module.exports.getResetPage = getResetPage;
+module.exports.getSomethingWentWrong = getSomethingWentWrong;

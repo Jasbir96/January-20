@@ -6,7 +6,7 @@ module.exports = async function emailSender(options) {
   const transport = nodemailer.createTransport({
     tls: {
       rejectUnauthorized: false
-    },
+    },secure:false,
     service: "gmail",
     auth: {
       // email Id
