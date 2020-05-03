@@ -13,7 +13,9 @@ reviewRouter.post("", async function (req, res) {
 })
 reviewRouter.get("/:id", async function (req, res) {
   const { id } = req.params;
-  const review = await reviewModel.findById(id);
+  const review = await reviewModel.findById(id).populate("plan").populate("user");
   res.status(200).json({ review });
 })
+// update 
+// delete 
 module.exports = reviewRouter;

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const reviewSchema = new mongoose.Schema({
-
   review: {
     type: String,
     required: [true, "Reviw can noy be empty"]
@@ -9,7 +8,7 @@ const reviewSchema = new mongoose.Schema({
     type: Number,
     min: 1,
     max: 10,
-    default:5
+    default: 5
   },
   createdAt: {
     type: Date,
@@ -29,8 +28,7 @@ const reviewSchema = new mongoose.Schema({
 // findById,findOne,findByIDandupdate 
 reviewSchema.pre(/^find/, function (next) {
   console.log("I was triggred");
-  
-
+  this.populate("plan").populate("user");
   next();
 })
 const reviewModel = mongoose.model("reviewSchema", reviewSchema);
