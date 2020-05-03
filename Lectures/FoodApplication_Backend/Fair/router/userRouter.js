@@ -26,7 +26,8 @@ const upload = multer({
 });
 //  file save => name , buffer => extension, 
 //  destination ,fileName
-userRouter.post("/updateProfile", upload.single("photo"), protectRoute, updateProfileHandler)
+//  request => loggedin=> id => user => profileImage link update 
+userRouter.patch("/updateProfile" , protectRoute,upload.single("user"),updateProfileHandler)
 // signup
 userRouter.post("/signup", signup)
 userRouter.post("/login", login)

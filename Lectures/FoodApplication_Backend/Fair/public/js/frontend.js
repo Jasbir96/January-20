@@ -5,6 +5,7 @@ let signupForm = d.querySelector(".signup");
 let logoutBtn = d.querySelector(".logout");
 let forgetForm = d.querySelector(".forgetPassword");
 let resetPasswordForm = d.querySelector(".resetPassword");
+
 let updateProfile = d.querySelector(".updateProfile");
 
 async function loginHelper(email, password) {
@@ -52,13 +53,7 @@ async function resetPasswordHelper(password, confirmPassword, resetToken) {
     alert("something wnet wrong")
   }
 }
-async function updateProfileHelper(formData) {
-  let response = await axios.patch("/api/users/updateProfile", formData);
-  if (response.data.success) {
-    alert("profile Image uploaded")
-    location.reload();
-  }
-}
+
 if (signupForm) {
   signupForm.addEventListener("submit", function (e) {
     // form reload 
@@ -92,10 +87,8 @@ if (forgetForm) {
     e.preventDefault();
     let email = d.querySelector(".email").value;
     forgetPasswordHelper(email);
-
   })
 }
-
 if (resetPasswordForm) {
   resetPasswordForm.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -106,10 +99,22 @@ if (resetPasswordForm) {
 
   })
 }
+
+async function updateProfileHelper(formData) {
+  let response = await axios.patch("/api/users/updateProfile", formData);
+  if (response.data.success) {
+    alert("profile Image uploaded")
+    location.reload();
+  }else{
+    alert("something went wrong");
+  }
+}
+//  image backend 
 if (updateProfile) {
   updateProfile.addEventListener("change", function (e) {
     e.preventDefault();
     // multipart data send 
+    // Browser
     const formData = new FormData();
     formData.append("user", updateProfile.files[0]);
     updateProfileHelper(formData);

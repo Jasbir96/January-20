@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const planRouter = require("./router/planRouter");
 const userRouter = require("./router/userRouter");
 const viewRouter = require("./router/viewRouter");
+const reviewRouter = require("./router/reviewRouter");
 app.use(cookieParser());
 app.use(express.json());
 // 
@@ -13,9 +14,10 @@ app.set("view engine", "pug");
 // templates address
 app.set("views", "views");
 
+app.use("/api/reviews", reviewRouter);
 app.use("/", viewRouter);
 app.use("/api/plans", planRouter)
-app.use("/api/users", userRouter)
+app.use("/api/users", userRouter);
 // wildcard
 app.use("*", function (req, res) {
   return res.status(404).json({

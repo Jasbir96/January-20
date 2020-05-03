@@ -109,7 +109,7 @@ async function isUserLoggedIn(req, res, next) {
         // console.log(decryptedData)
         req.id = id;
         req.user = await userModel.findById(id);
-        console.log(req.user);
+        // console.log(req.user);
         return next();
       } else {
         return next();

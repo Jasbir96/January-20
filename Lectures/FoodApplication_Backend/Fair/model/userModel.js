@@ -40,6 +40,7 @@ const userSchema = new mongoose.Schema({
   },
   resetToken: String,
   expiresIn: String,
+  // 1. 
   profileImage: {
     type: String,
     default: "/img/users/default.jpeg"

@@ -1,4 +1,5 @@
 const userModel = require("../model/userModel");
+const fs = require("fs");
 const sharp = require("sharp");
 async function getMe(req, res) {
   try {
@@ -45,21 +46,43 @@ async function getAllUsers(req, res) {
     })
   }
 }
-async function updateProfileHandler(req, res) {
-  const id = req.id;
-  const user = await userModel.findById(id);
 
-  await sharp(req.file.path).toFormat("jpeg").jpeg({ quality: 60 }).toFile(`public/img/users/${Date.now()}.jpeg`);
-  // 
-  res.status(200).json({
-    
-  })
+// protectRoute
+async function updateProfileHandler(req, res) {
+  try {
+    const id = req.id;
+    const user = await userModel.findById(id);
+    // process image
+    let toBesavedImagePath = `public/img/users/user-${Date.now()}.jpeg`;
+    await sharp(req.file.path).toFormat("jpeg").jpeg({ quality: 60 }).toFile(toBesavedImagePath);
+    // public remove 
+    let iDBLink = toBesavedImagePath.split("/").slice(1).join("/")
+    // user update 
+    user.profileImage = iDBLink;
+    await user.save({
+      validateBeforeSave: false
+    })
+    //  user profile Image link update
+    // process update public folder 
+    //db link update 
+    // console.log(user);
+    res.status(200).json({
+      success: "Image uploaded"
+    })
+    // extra work 
+    fs.promises.unlink(req.file.path);
+  } catch (err) {
+    console.log(err);
+    res.status(200).json({
+      status: "something went wrong"
+    })
+  }
 }
 module.exports.getAllUsers = getAllUsers;
 // module.exports.getUser=getUser;
 module.exports.createUser = createUser;
 // module.exports.updateUser=updateUser;
 // module.exports.removeUser=removeUser;
-
+module.exports.updateProfileHandler = updateProfileHandler;
 
 module.exports.getMe = getMe;
